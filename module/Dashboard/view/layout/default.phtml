@@ -1,0 +1,77 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8">
+            <?php echo $this->headTitle($this->translate('3D Dashboard Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+            <?php
+            echo $this->headMeta()
+                    ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                    ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+            ?>
+
+            <?php
+            echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/png', 'href' => $this->basePath() . '/img/favicon.png'))
+                    ->appendStylesheet($this->basePath('css/bootstrap.min.css'))
+                    ->appendStylesheet($this->basePath('css/fontello.css'))
+                    ->appendStylesheet($this->basePath('css/theme-default.css'))
+            ?>
+
+            <?php
+            echo $this->headScript()
+                    ->appendFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                    ->appendFile($this->basePath('js/html5shiv.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+            ;
+            ?>
+    </head>
+    <body>
+        <div class="body-wrapper">
+            <nav class="navbar navbar-default navbar-top" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><i class="icon-database"></i> 3D</a>
+                </div>
+
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <i class="icon-user"></i> <i class="icon-down-dir"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="<?php echo $this->url('auth', array('action' => 'logout')); ?>"><i class="icon-logout"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav class="navbar-default navbar-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <?php
+                    echo $this->navigation('navigation')
+                            ->menu()
+                            ->setUlClass('nav')
+                            ->setPartial('partial/menu/navigation.phtml');
+                    ?>
+                </div>
+            </nav>
+
+            <div class="page-wrapper">
+                <?php echo $this->content; ?>
+            </div>
+
+            <footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez</a></p></footer>
+        </div>
+
+        <?php
+        echo $this->headScript()
+                ->appendFile($this->basePath('js/jquery.min.js'))
+                ->appendFile($this->basePath('js/bootstrap.min.js'))
+                ->appendFile($this->basePath('js/jquery.metisMenu.js'))
+                ->appendFile($this->basePath('js/dashboard.js'));
+        ?>
+    </body>
+</html>

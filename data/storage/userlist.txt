@@ -1,0 +1,2 @@
+admin|admin|administrator
+manager|123|manager

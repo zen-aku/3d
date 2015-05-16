@@ -1,0 +1,44 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8">
+            <?php echo $this->headTitle($this->translate('Dashboard Login'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+            <?php
+            echo $this->headMeta()
+                    ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                    ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+            ?>
+
+            <?php
+            echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                    ->appendStylesheet($this->basePath('css/bootstrap.min.css'))
+                    ->appendStylesheet($this->basePath('css/fontello.css'))
+                    ->appendStylesheet($this->basePath('css/theme-default.css'));
+            ?>
+
+            <?php
+            echo $this->headScript()
+                    ->appendFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                    ->appendFile($this->basePath('js/html5shiv.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+            ;
+            ?>
+    </head>
+    <body>
+        <div class="login-page-wrapper">
+            <div class="page-inner">
+                <?php echo $this->content; ?>
+            </div>
+        </div>
+
+        <?php
+        echo $this->headScript()
+                ->appendFile($this->basePath('js/jquery.min.js'))
+                ->appendFile($this->basePath('js/bootstrap.min.js'));
+
+        echo $this->headScript()
+                ->appendFile($this->basePath('js/jquery.placeholder.min.js'), 'text/javascript', array('conditional' => 'lt IE 9'));
+        ?>
+    </body>
+</html>

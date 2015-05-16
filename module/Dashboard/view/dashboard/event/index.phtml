@@ -1,0 +1,51 @@
+<?php
+
+namespace Dashboard\View;
+
+$cacheTime = $this->model->getCachedTime(__NAMESPACE__ . '\EventList');
+?>
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-header">
+            <i class="icon-history"></i> Event Manager
+            <span class="cache-indicator">
+                <?php echo ($cacheTime ? 'Data cached since ' . $cacheTime .' <a href="#" data-cache-key="' . __NAMESPACE__ . '\EventList" class="clear-cache">clear cache</a>' : 'no cache'); ?>
+            </span>
+        </h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Bordered Table
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>User</th>
+                                <th>Event</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($this->model->getEventList() as $event) { ?>
+                                <tr>
+                                    <td><?php echo $event->getDatetime(); ?></td>
+                                    <td><?php echo $event->getUsername(); ?></td>
+                                    <td><?php echo $event->getEvent(); ?></td>
+                                    <td><?php echo $event->getAttributes(); ?></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
